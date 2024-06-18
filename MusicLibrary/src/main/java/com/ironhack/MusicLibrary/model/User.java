@@ -1,14 +1,11 @@
 package com.ironhack.MusicLibrary.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.ArrayList;
+import jakarta.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -16,8 +13,74 @@ public class User {
     private Long id;
 
     private String username;
-
     private String password;
 
-    private List<PlayList> playlists = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<PlayList> playlists;
+
+    @OneToOne
+    @JoinColumn(name = "music_library_id", referencedColumnName = "id")
+    private MusicLibrary musicLibrary;
+
+    public User(String username, String password, List<PlayList> playlists, MusicLibrary musicLibrary) {
+        this.username = username;
+        this.password = password;
+        this.playlists = playlists;
+        this.musicLibrary = musicLibrary;
+    }
+
+    public User() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<PlayList> getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(List<PlayList> playlists) {
+        this.playlists = playlists;
+    }
+
+    public MusicLibrary getMusicLibrary() {
+        return musicLibrary;
+    }
+
+    public void setMusicLibrary(MusicLibrary musicLibrary) {
+        this.musicLibrary = musicLibrary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(playlists, user.playlists) && Objects.equals(musicLibrary, user.musicLibrary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, playlists, musicLibrary);
+    }
 }
