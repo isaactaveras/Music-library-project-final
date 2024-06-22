@@ -1,30 +1,28 @@
 package com.ironhack.MusicLibrary.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "songs")
-public class Song {
+@DiscriminatorValue("SONG")
+public class Song extends Media {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    private String title;
-    private int length;
+    @NotNull(message = "Duration is mandatory")
+    private int duration; // Duration in seconds
 
     @ManyToOne
-    @JoinColumn(name = "artist_id")
+    @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
 
     @ManyToOne
-    @JoinColumn(name = "album_id")
+    @JoinColumn(name = "album_id", referencedColumnName = "id")
     private Album album;
 
     @ManyToOne
-    @JoinColumn(name = "genre_id")
+    @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
 
     @ManyToOne
@@ -37,38 +35,20 @@ public class Song {
 
     public Song() {}
 
-    public Song(String title, int length, Artist artist, Album album, Genre genre, MusicLibrary musicLibrary, PlayList playList) {
-        this.title = title;
-        this.length = length;
+    public Song(String title, int duration, Artist artist, Album album, Genre genre) {
+        super(title);
+        this.duration = duration;
         this.artist = artist;
         this.album = album;
         this.genre = genre;
-        this.musicLibrary = musicLibrary;
-        this.playList = playList;
     }
 
-    public long getId() {
-        return id;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
+    public void setDuration(int length) {
+        this.duration = length;
     }
 
     public Artist getArtist() {
@@ -115,12 +95,13 @@ public class Song {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Song song = (Song) o;
-        return id == song.id && length == song.length && Objects.equals(title, song.title) && Objects.equals(artist, song.artist) && Objects.equals(album, song.album) && Objects.equals(genre, song.genre) && Objects.equals(musicLibrary, song.musicLibrary) && Objects.equals(playList, song.playList);
+        return duration == song.duration && Objects.equals(artist, song.artist) && Objects.equals(album, song.album) && Objects.equals(genre, song.genre) && Objects.equals(musicLibrary, song.musicLibrary) && Objects.equals(playList, song.playList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, length, artist, album, genre, musicLibrary, playList);
+        return Objects.hash(super.hashCode(), duration, artist, album, genre, musicLibrary, playList);
     }
 }

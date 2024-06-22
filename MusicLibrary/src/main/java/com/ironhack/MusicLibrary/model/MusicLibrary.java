@@ -1,6 +1,8 @@
 package com.ironhack.MusicLibrary.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +14,7 @@ public class MusicLibrary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull(message = "User is mandatory")
     @OneToOne(mappedBy = "musicLibrary")
     private User user;
 
