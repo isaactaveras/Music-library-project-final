@@ -26,11 +26,10 @@ public class User {
     @JoinColumn(name = "music_library_id", referencedColumnName = "id")
     private MusicLibrary musicLibrary;
 
-    public User(String username, String password, List<PlayList> playlists, MusicLibrary musicLibrary) {
+    public User(String username, String password, List<PlayList> playlists) {
         this.username = username;
         this.password = password;
         this.playlists = playlists;
-        this.musicLibrary = musicLibrary;
     }
 
     public User() {}

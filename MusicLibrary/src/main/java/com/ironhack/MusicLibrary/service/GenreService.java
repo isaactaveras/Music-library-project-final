@@ -17,16 +17,12 @@ public class GenreService {
     public Genre createGenre(GenreDTO genreDTO) {
         Genre genre = new Genre();
         genre.setName(genreDTO.getName());
-        genre.setSongs(genreDTO.getSongs());
-        genre.setAlbums(genreDTO.getAlbums());
         return genreRepository.save(genre);
     }
 
     public Genre updateGenre(Long genreId, GenreDTO genreDTO) {
         Genre genre = genreRepository.findById(genreId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Genre not found"));
         genre.setName(genreDTO.getName());
-        genre.setSongs(genreDTO.getSongs());
-        genre.setAlbums(genreDTO.getAlbums());
         return genreRepository.save(genre);
     }
 

@@ -29,11 +29,8 @@ public class Genre {
 
     public Genre() {}
 
-    public Genre(String name, List<Album> albums, List<Song> songs, MusicLibrary musicLibrary) {
+    public Genre(String name) {
         this.name = name;
-        this.albums = albums;
-        this.songs = songs;
-        this.musicLibrary = musicLibrary;
     }
 
     public long getId() {

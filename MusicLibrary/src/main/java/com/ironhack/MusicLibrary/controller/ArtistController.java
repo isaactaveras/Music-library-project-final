@@ -43,7 +43,7 @@ public class ArtistController implements ArtistControllerInterface {
         return artistRepository.findAll();
     }
 
-    @GetMapping
+    @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Artist getArtistById(@PathVariable(name = "id") Long artistId) {
         return artistRepository.findById(artistId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Artist not found"));

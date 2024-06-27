@@ -1,6 +1,7 @@
 package com.ironhack.MusicLibrary.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
@@ -9,6 +10,13 @@ import java.util.Objects;
 @Table(name = "songs")
 @DiscriminatorValue("SONG")
 public class Song extends Media {
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.TABLE)
+//    private long id;
+//
+//    @NotBlank(message = "Title is mandatory")
+//    private String title;
 
     @NotNull(message = "Duration is mandatory")
     private int duration; // Duration in seconds
@@ -42,6 +50,22 @@ public class Song extends Media {
         this.album = album;
         this.genre = genre;
     }
+
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(long id) {
+//        this.id = id;
+//    }
+//
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
 
     public int getDuration() {
         return duration;

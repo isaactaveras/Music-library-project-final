@@ -16,16 +16,18 @@ public class AlbumDTO {
     private int year;
 
     @NotNull(message = "Artist is mandatory")
-    private Artist artist;
+    private Long artistId;
 
-    @NotNull(message = "Songs is mandatory")
+    @NotNull(message = "Genre is mandatory")
+    private Long genreId;
+
     private List<Song> songs;
 
-    public AlbumDTO(String title, int year, Artist artist, List<Song> songs) {
+    public AlbumDTO(String title, int year, Long artistId, Long genreId) {
         this.title = title;
         this.year = year;
-        this.artist = artist;
-        this.songs = songs;
+        this.artistId = artistId;
+        this.genreId = genreId;
     }
 
     public AlbumDTO() {}
@@ -46,12 +48,28 @@ public class AlbumDTO {
         this.year = year;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public Long getArtistId() {
+        return artistId;
     }
 
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setArtist(Long artistId) {
+        this.artistId = artistId;
+    }
+
+    public void setArtistId(Long artistId) {
+        this.artistId = artistId;
+    }
+
+    public Long getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(Long genreId) {
+        this.genreId = genreId;
+    }
+
+    public void setGenre(Long genreId) {
+        this.genreId = genreId;
     }
 
     public List<Song> getSongs() {

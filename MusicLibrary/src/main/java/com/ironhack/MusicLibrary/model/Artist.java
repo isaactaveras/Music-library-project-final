@@ -29,11 +29,8 @@ public class Artist {
 
     public Artist() {}
 
-    public Artist(String name, List<Album> albums, List<Song> songs, MusicLibrary musicLibrary) {
+    public Artist(String name) {
         this.name = name;
-        this.albums = albums;
-        this.songs = songs;
-        this.musicLibrary = musicLibrary;
     }
 
     public long getId() {

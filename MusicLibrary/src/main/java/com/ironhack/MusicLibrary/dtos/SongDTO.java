@@ -13,20 +13,22 @@ public class SongDTO {
     private int duration; // Duration in seconds
 
     @NotNull(message = "Artist is mandatory")
-    private Artist artist;
+    private Long artistId;
 
     @NotNull(message = "Album is mandatory")
-    private Album album;
+    private Long albumId;
 
     @NotNull(message = "Genre is mandatory")
-    private Genre genre;
+    private Long genreId;
 
-    public SongDTO(String title, int duration, Artist artist, Album album, Genre genre) {
+
+
+    public SongDTO(String title, int duration, Long artistId, Long albumId, Long genreId) {
         this.title = title;
         this.duration = duration;
-        this.artist = artist;
-        this.album = album;
-        this.genre = genre;
+        this.artistId = artistId;
+        this.albumId = albumId;
+        this.genreId = genreId;
     }
 
     public SongDTO() {}
@@ -47,27 +49,40 @@ public class SongDTO {
         this.duration = duration;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public Long getArtistId() {
+        return artistId;
     }
 
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setArtistId(Long artistId) {
+        this.artistId = artistId;
     }
 
-    public Album getAlbum() {
-        return album;
+    public void setArtist(Long artistId) {
+        this.artistId = artistId;
     }
 
-    public void setAlbum(Album album) {
-        this.album = album;
+    public Long getGenreId() {
+        return genreId;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public void setGenreId(Long genreId) {
+        this.genreId = genreId;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setGenre(Long genreId) {
+        this.genreId = genreId;
     }
+
+    public Long getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(Long albumId) {
+        this.albumId = albumId;
+    }
+
+    public void setAlbum(Long albumId) {
+        this.albumId = albumId;
+    }
+
 }

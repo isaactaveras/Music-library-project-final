@@ -43,7 +43,7 @@ public class AlbumController implements AlbumControllerInterface {
         return albumRepository.findAll();
     }
 
-    @GetMapping
+    @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Album getAlbumById(@PathVariable(name = "id") Long albumId) {
         return albumRepository.findById(albumId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Album not found"));

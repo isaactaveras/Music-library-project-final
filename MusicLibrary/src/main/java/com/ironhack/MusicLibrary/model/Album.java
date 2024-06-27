@@ -1,6 +1,7 @@
 package com.ironhack.MusicLibrary.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
@@ -11,12 +12,20 @@ import java.util.Objects;
 @DiscriminatorValue("ALBUM")
 public class Album extends Media {
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private long id;
+
+//    @NotBlank(message = "Title is mandatory")
+//    private String title;
+
     @NotNull(message = "Year is mandatory")
     private int year;
 
     @ManyToOne
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
+
 
     @OneToMany(mappedBy = "album")
     private List<Song> songs;
@@ -29,16 +38,30 @@ public class Album extends Media {
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
 
-    public Album(String title, int year, Artist artist, List<Song> songs, MusicLibrary musicLibrary, Genre genre) {
+    public Album(String title, int year, Artist artist, Genre genre) {
         super(title);
         this.year = year;
         this.artist = artist;
-        this.songs = songs;
-        this.musicLibrary = musicLibrary;
         this.genre = genre;
     }
 
     public Album() {}
+
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(long id) {
+//        this.id = id;
+//    }
+//
+//    public String getTitle() {
+//        return title;
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
 
     public int getYear() {
         return year;

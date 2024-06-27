@@ -21,7 +21,7 @@ public class PlayList {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "playlist")
+    @OneToMany(mappedBy = "playList")
     private List<Song> songs;
 
     public PlayList(String name, User user, List<Song> songs) {

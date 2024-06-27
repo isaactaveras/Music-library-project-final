@@ -12,18 +12,14 @@ public class ArtistDTO {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @NotNull(message = "Songs is mandatory")
     private List<Song> songs;
 
-    @NotNull(message = "Albums is mandatory")
     private List<Album> albums;
 
     public ArtistDTO() {}
 
-    public ArtistDTO(String name, List<Song> songs, List<Album> albums) {
+    public ArtistDTO(String name) {
         this.name = name;
-        this.songs = songs;
-        this.albums = albums;
     }
 
     public String getName() {

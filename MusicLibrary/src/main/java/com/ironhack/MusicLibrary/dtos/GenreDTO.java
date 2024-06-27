@@ -12,18 +12,16 @@ public class GenreDTO {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @NotNull(message = "Songs is mandatory")
+    //@NotNull(message = "Songs is mandatory")
     private List<Song> songs;
 
-    @NotNull(message = "Albums is mandatory")
+    //@NotNull(message = "Albums is mandatory")
     private List<Album> albums;
 
     public GenreDTO() {}
 
-    public GenreDTO(String name, List<Song> songs, List<Album> albums) {
+    public GenreDTO(String name) {
         this.name = name;
-        this.songs = songs;
-        this.albums = albums;
     }
 
     public String getName() {

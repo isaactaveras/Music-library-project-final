@@ -7,12 +7,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "media")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "media_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Media {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
 
     @NotBlank(message = "Title is mandatory")
