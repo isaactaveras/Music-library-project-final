@@ -24,9 +24,8 @@ public class PlayList {
     @OneToMany(mappedBy = "playList")
     private List<Song> songs;
 
-    public PlayList(String name, User user, List<Song> songs) {
+    public PlayList(String name, List<Song> songs) {
         this.name = name;
-        this.user = user;
         this.songs = songs;
     }
 

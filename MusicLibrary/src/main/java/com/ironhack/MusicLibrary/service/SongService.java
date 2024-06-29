@@ -55,9 +55,9 @@ public class SongService {
         return songRepository.save(song);
     }
 
-    public Song deleteSong(Long sondId) {
-        Song foundSong = songRepository.findById(sondId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Song not found"));
-        songRepository.deleteById(sondId);
+    public Song deleteSong(Long songId) {
+        Song foundSong = songRepository.findById(songId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Song not found"));
+        songRepository.deleteById(songId);
         return foundSong;
     }
 }

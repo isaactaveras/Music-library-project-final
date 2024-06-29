@@ -8,20 +8,28 @@ import java.util.List;
 public class UserDTO {
 
     @NotBlank(message = "Name is mandatory")
+    private String name;
+
+    @NotBlank(message = "Name is mandatory")
     private String username;
 
     @NotBlank(message = "Password is mandatory")
     private String password;
 
-
-    private List<PlayList> playlists;
-
     public UserDTO() {}
 
-    public UserDTO(String username, String password, List<PlayList> playlists) {
+    public UserDTO(String name, String username, String password) {
+        this.name = name;
         this.username = username;
         this.password = password;
-        this.playlists = playlists;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {
@@ -40,11 +48,4 @@ public class UserDTO {
         this.password = password;
     }
 
-    public List<PlayList> getPlaylists() {
-        return playlists;
-    }
-
-    public void setPlaylists(List<PlayList> playlists) {
-        this.playlists = playlists;
-    }
 }

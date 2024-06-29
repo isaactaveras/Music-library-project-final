@@ -15,15 +15,11 @@ public class PlayListDTO {
     @NotNull(message = "Songs is mandatory")
     private List<Song> songs;
 
-    @NotNull(message = "User is mandatory")
-    private User user;
-
     public PlayListDTO() {}
 
-    public PlayListDTO(String name, List<Song> songs, User user) {
+    public PlayListDTO(String name, List<Song> songs) {
         this.name = name;
         this.songs = songs;
-        this.user = user;
     }
 
     public String getName() {
@@ -40,13 +36,5 @@ public class PlayListDTO {
 
     public void setSongs(List<Song> songs) {
         this.songs = songs;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
