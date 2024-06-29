@@ -2,13 +2,18 @@ package com.ironhack.MusicLibrary.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "media")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name = "media_type", discriminatorType = DiscriminatorType.STRING)
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode
 public abstract class Media {
 
     @Id
@@ -18,38 +23,7 @@ public abstract class Media {
     @NotBlank(message = "Title is mandatory")
     private String title;
 
-    public Media() {}
-
     public Media(String title) {
         this.title = title;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Media media = (Media) o;
-        return id == media.id && Objects.equals(title, media.title);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title);
     }
 }

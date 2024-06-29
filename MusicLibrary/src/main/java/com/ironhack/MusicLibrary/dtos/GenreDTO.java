@@ -1,50 +1,17 @@
 package com.ironhack.MusicLibrary.dtos;
 
-import com.ironhack.MusicLibrary.model.Album;
-import com.ironhack.MusicLibrary.model.Song;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.List;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class GenreDTO {
 
     @NotBlank(message = "Name is mandatory")
     private String name;
-
-    //@NotNull(message = "Songs is mandatory")
-    private List<Song> songs;
-
-    //@NotNull(message = "Albums is mandatory")
-    private List<Album> albums;
-
-    public GenreDTO() {}
-
-    public GenreDTO(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Song> getSongs() {
-        return songs;
-    }
-
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
-    }
-
-    public List<Album> getAlbums() {
-        return albums;
-    }
-
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
-    }
 }
