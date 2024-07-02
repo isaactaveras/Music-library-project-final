@@ -32,7 +32,7 @@ public class PlayListController implements PlayListControllerInterface {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public PlayList updatePlayList(@PathVariable(name = "id") Long playListId, @Valid @RequestBody PlayListDTO playListDTO)  {
         return playListService.updatePlayList(playListId, playListDTO);
     }
@@ -50,7 +50,7 @@ public class PlayListController implements PlayListControllerInterface {
     }
 
     @DeleteMapping("/{id}/delete")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public PlayList deletePlayList(@PathVariable(name = "id") Long playListId) {
         return playListService.deletePlayList(playListId);
     }

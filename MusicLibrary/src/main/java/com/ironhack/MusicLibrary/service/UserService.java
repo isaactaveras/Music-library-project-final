@@ -35,7 +35,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
     public User createUser(UserDTO userDTO) {
         User user = new User();
         user.setName(userDTO.getName());
@@ -60,7 +59,7 @@ public class UserService implements UserDetailsService {
         }
 
         if(userDTO.getPassword() != null && !userDTO.getPassword().equals("")){
-            foundUser.setPassword(userDTO.getPassword());
+            foundUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         }
         return userRepository.save(foundUser);
     }
@@ -70,8 +69,7 @@ public class UserService implements UserDetailsService {
         userRepository.deleteById(userId);
         return foundUser;
     }
-
-
+    
 //    public User saveUser(User user) {
 //
 //        // validate username is unique

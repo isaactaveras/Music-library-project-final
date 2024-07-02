@@ -25,4 +25,9 @@ public class AlbumDTO {
     @NotNull(message = "Genre is mandatory")
     private Long genreId;
 
+    public AlbumDTO(String title, int year) {
+        this.title = title;
+        this.year = year;
+    }
+
 }

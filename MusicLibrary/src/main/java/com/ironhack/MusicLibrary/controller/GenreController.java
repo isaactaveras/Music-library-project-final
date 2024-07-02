@@ -32,7 +32,7 @@ public class GenreController implements GenreControllerInterface {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Genre updateGenre(@PathVariable(name = "id") Long genreId, @Valid @RequestBody GenreDTO genreDTO) {
         return genreService.updateGenre(genreId, genreDTO);
     }
@@ -50,7 +50,7 @@ public class GenreController implements GenreControllerInterface {
     }
 
     @DeleteMapping("/{id}/delete")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Genre deleteGenre(@PathVariable(name = "id") Long genreId) {
         return genreService.deleteGenre(genreId);
     }

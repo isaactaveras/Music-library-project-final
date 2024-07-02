@@ -83,17 +83,13 @@ public class SecurityConfig {
 
         // set up authorization for different request matchers and user roles
         http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/login/**").permitAll() // public endpoint, we could add more if we wanted to
-                // could be deleted .requestMatchers(GET, "/api/users").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .requestMatchers("/login/**").permitAll()
+//                .requestMatchers(POST, "/users").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+//                .requestMatchers(PUT, "/users/**").hasAnyAuthority("ROLE_ADMIN")
 //                .requestMatchers(GET, "/users").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-//                .requestMatchers(POST, "/artists").hasAnyAuthority("ROLE_USER")
-//                .requestMatchers(PUT, "/artists").hasAnyAuthority("ROLE_USER")
-//                .requestMatchers(GET, "/artists").hasAnyAuthority("ROLE_USER")
-//                .requestMatchers(DELETE, "/artists").hasAnyAuthority("ROLE_USER")
-//                .requestMatchers(POST, "/users").hasAnyAuthority("ROLE_USER")
-//                .requestMatchers(POST, "/api/roles").hasAnyAuthority("ROLE_ADMIN")
-//                .requestMatchers(POST, "/api/roles/add-to-user").hasAnyAuthority("ROLE_ADMIN")
-                .anyRequest().authenticated()); // any other endpoints require authentication
+//                .requestMatchers(GET, "/users/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+//                .requestMatchers(DELETE, "/users/**").hasAnyAuthority("ROLE_ADMIN")
+                .anyRequest().authenticated());
 
         // add the custom authentication filter to the http security object
         http.addFilter(customAuthenticationFilter);

@@ -32,7 +32,7 @@ public class AlbumController implements AlbumControllerInterface {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Album updateAlbum(@PathVariable(name = "id") Long albumId, @Valid @RequestBody AlbumDTO albumDTO) {
         return albumService.updateAlbum(albumId, albumDTO);
     }
@@ -50,7 +50,7 @@ public class AlbumController implements AlbumControllerInterface {
     }
 
     @DeleteMapping("/{id}/delete")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Album deleteAlbum(@PathVariable(name = "id") Long albumId) {
         return albumService.deleteAlbum(albumId);
     }

@@ -32,7 +32,7 @@ public class SongController implements SongControllerInterface {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Song updateSong(@PathVariable(name = "id") Long songId, @Valid @RequestBody SongDTO songDTO) {
         return songService.updateSong(songId, songDTO);
     }
@@ -50,7 +50,7 @@ public class SongController implements SongControllerInterface {
     }
 
     @DeleteMapping("/{id}/delete")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Song deleteSong(@PathVariable(name = "id") Long songId) {
         return songService.deleteSong(songId);
     }

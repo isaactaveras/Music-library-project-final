@@ -23,9 +23,13 @@ public class Genre {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @OneToMany(mappedBy = "genre")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "genre")
     private List<Album> albums;
 
-    @OneToMany(mappedBy = "genre")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "genre")
     private List<Song> songs;
+
+    public Genre(String name) {
+        this.name = name;
+    }
 }

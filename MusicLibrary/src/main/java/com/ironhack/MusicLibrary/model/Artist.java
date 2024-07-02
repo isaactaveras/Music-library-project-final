@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "artists")
@@ -23,9 +22,13 @@ public class Artist {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "artist")
     private List<Album> albums;
 
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "artist")
     private List<Song> songs;
+
+    public Artist(String name) {
+        this.name = name;
+    }
 }

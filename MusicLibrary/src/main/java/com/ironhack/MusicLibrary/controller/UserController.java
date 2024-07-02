@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public User updateUser(@PathVariable(name = "id") Long userId, @Valid @RequestBody UserDTO userDTO) {
         return userService.updateUser(userId, userDTO);
     }
@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}/delete")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public User deleteUser(@PathVariable(name = "id") Long userId) {
         return userService.deleteUser(userId);
     }

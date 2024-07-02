@@ -27,6 +27,11 @@ public class Album extends Media {
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
 
-    @OneToMany(mappedBy = "album")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "album")
     private List<Song> songs;
+
+    public Album(String title, int year) {
+        super(title);
+        this.year = year;
+    }
 }

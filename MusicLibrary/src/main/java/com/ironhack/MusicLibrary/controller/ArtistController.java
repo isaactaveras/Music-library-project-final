@@ -32,7 +32,7 @@ public class ArtistController implements ArtistControllerInterface {
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Artist updateArtist(@PathVariable(name = "id") Long artistId, @Valid @RequestBody ArtistDTO artistDTO) {
         return artistService.updateArtist(artistId, artistDTO);
     }
@@ -50,7 +50,7 @@ public class ArtistController implements ArtistControllerInterface {
     }
 
     @DeleteMapping("/{id}/delete")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Artist deleteArtist(@PathVariable(name = "id") Long artistId) {
         return artistService.deleteArtist(artistId);
     }
