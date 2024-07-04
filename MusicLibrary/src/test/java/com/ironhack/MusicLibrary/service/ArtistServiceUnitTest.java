@@ -1,5 +1,6 @@
 package com.ironhack.MusicLibrary.service;
 
+import com.ironhack.MusicLibrary.dtos.AlbumDTO;
 import com.ironhack.MusicLibrary.dtos.ArtistDTO;
 import com.ironhack.MusicLibrary.model.Artist;
 import com.ironhack.MusicLibrary.repository.ArtistRepository;

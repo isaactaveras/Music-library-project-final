@@ -35,4 +35,12 @@ public class Song extends Media {
     @ManyToMany(mappedBy = "songs")
     @JsonIgnore
     private List<PlayList> playLists;
+
+    public Song(String title, Integer duration, Artist artist, Genre genre, Album album) {
+        super(title);
+        this.duration = duration;
+        this.artist = artist;
+        this.genre = genre;
+        this.album = album;
+    }
 }

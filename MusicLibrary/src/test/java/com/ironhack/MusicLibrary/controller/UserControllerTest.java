@@ -26,24 +26,22 @@ class UserControllerTest {
     private WebApplicationContext webApplicationContext;
 
     @Autowired
-    private UserRepository UserRepository;
+    private UserRepository userRepository;
 
     private MockMvc mockMvc;
     private ObjectMapper objectMapper = new ObjectMapper();
     private User user;
-    @Autowired
-    private UserRepository userRepository;
 
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         user = new User("Antonio Ruiz", "antonio", "1234");
-        UserRepository.save(user);
+        userRepository.save(user);
     }
 
     @AfterEach
     void tearDown() {
-        UserRepository.deleteAll();
+        userRepository.deleteAll();
     }
 
     @Test

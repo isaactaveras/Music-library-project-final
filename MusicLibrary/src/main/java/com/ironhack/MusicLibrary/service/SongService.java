@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @Service
 public class SongService {
 
@@ -63,5 +65,14 @@ public class SongService {
         Song foundSong = songRepository.findById(songId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Song not found"));
         songRepository.deleteById(songId);
         return foundSong;
+    }
+
+    public Song findById(Long songId) {
+        Optional<Song> song = songRepository.findById(songId);
+        if (song.isPresent()) {
+            return song.get();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Song id not found.");
+        }
     }
 }

@@ -86,28 +86,4 @@ class ArtistServiceTest {
             artistService.deleteArtist(0L);
         });
     }
-
-    @Test
-    void findById_existingId_returnsArtist() {
-        Artist artist = artistRepository.findAll().get(0);
-        Artist found = artistService.findById(artist.getId());
-        assertNotNull(found);
-        assertEquals("AC/DC", found.getName());
-    }
-
-    @Test
-    void update_existingId_updatesArtist() {
-        Artist artist = artistRepository.findAll().get(0);
-        ArtistDTO artistDTO = new ArtistDTO("Led Zeppelin");
-        artistService.updateArtist(artist.getId(), artistDTO);
-        Artist updated = artistRepository.findById(artist.getId()).get();
-        assertEquals("Led Zeppelin", updated.getName());
-    }
-
-    @Test
-    void delete_existingId_deletesArtist() {
-        Artist artist = artistRepository.findAll().get(0);
-        artistService.deleteArtist(artist.getId());
-        assertFalse(artistRepository.findById(artist.getId()).isPresent());
-    }
 }

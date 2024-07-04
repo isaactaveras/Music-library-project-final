@@ -1,11 +1,8 @@
 package com.ironhack.MusicLibrary.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ironhack.MusicLibrary.dtos.ArtistDTO;
 import com.ironhack.MusicLibrary.dtos.GenreDTO;
-import com.ironhack.MusicLibrary.model.Artist;
 import com.ironhack.MusicLibrary.model.Genre;
-import com.ironhack.MusicLibrary.repository.ArtistRepository;
 import com.ironhack.MusicLibrary.repository.GenreRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

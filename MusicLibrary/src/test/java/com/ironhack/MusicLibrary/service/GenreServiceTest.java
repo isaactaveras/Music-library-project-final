@@ -1,10 +1,7 @@
 package com.ironhack.MusicLibrary.service;
 
-import com.ironhack.MusicLibrary.dtos.ArtistDTO;
 import com.ironhack.MusicLibrary.dtos.GenreDTO;
-import com.ironhack.MusicLibrary.model.Artist;
 import com.ironhack.MusicLibrary.model.Genre;
-import com.ironhack.MusicLibrary.repository.ArtistRepository;
 import com.ironhack.MusicLibrary.repository.GenreRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +35,7 @@ class GenreServiceTest {
 
     @Test
     void findById_existingId_genreReturned() {
-        Genre genre = genreRepository.findAll().get(0);
+        Genre genre = genreRepository.findAll().getFirst();
         Genre found = genreService.findById(genre.getId());
         assertNotNull(found);
         assertEquals("Rock", found.getName());
@@ -89,29 +86,4 @@ class GenreServiceTest {
             genreService.deleteGenre(0L);
         });
     }
-
-    @Test
-    void findById_existingId_returnsGenre() {
-        Genre genre = genreRepository.findAll().get(0);
-        Genre found = genreService.findById(genre.getId());
-        assertNotNull(found);
-        assertEquals("Rock", found.getName());
-    }
-
-    @Test
-    void update_existingId_updatesGenre() {
-        Genre genre = genreRepository.findAll().get(0);
-        GenreDTO genreDTO = new GenreDTO("Heavy Metal");
-        genreService.updateGenre(genre.getId(), genreDTO);
-        Genre updated = genreRepository.findById(genre.getId()).get();
-        assertEquals("Heavy Metal", updated.getName());
-    }
-
-    @Test
-    void delete_existingId_deletesGenre() {
-        Genre genre = genreRepository.findAll().get(0);
-        genreService.deleteGenre(genre.getId());
-        assertFalse(genreRepository.findById(genre.getId()).isPresent());
-    }
-
 }

@@ -1,6 +1,5 @@
 package com.ironhack.MusicLibrary.repository;
 
-import com.ironhack.MusicLibrary.model.Artist;
 import com.ironhack.MusicLibrary.model.Genre;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
