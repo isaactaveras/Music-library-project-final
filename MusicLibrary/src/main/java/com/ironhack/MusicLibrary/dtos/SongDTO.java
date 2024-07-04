@@ -13,19 +13,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SongDTO {
 
-    @NotBlank(message = "Title is mandatory")
     private String title;
 
-    @NotNull(message = "Duration is mandatory")
-    private int duration; // Duration in seconds
+    private Integer duration; // Duration in seconds
 
-    @NotNull(message = "Artist is mandatory")
     private Long artistId;
 
-    @NotNull(message = "Album is mandatory")
     private Long albumId;
 
-    @NotNull(message = "Genre is mandatory")
     private Long genreId;
 
     public void setArtist(Long artistId) {

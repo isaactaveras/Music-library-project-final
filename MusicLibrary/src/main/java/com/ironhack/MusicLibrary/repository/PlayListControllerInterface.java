@@ -7,5 +7,5 @@ import jakarta.validation.Valid;
 public interface PlayListControllerInterface {
     PlayList createPlayList(@Valid PlayListDTO playListDTO);
     PlayList updatePlayList(Long playListId, @Valid PlayListDTO playListDTO);
-    PlayList deletePlayList(Long playListId);
+    void deletePlayList(Long playListId);
 }

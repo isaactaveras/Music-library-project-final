@@ -1,8 +1,11 @@
 package com.ironhack.MusicLibrary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "songs")
@@ -15,21 +18,21 @@ import lombok.*;
 public class Song extends Media {
 
     @NotNull(message = "Duration is mandatory")
-    private int duration; // Duration in seconds
+    private Integer duration; // Duration in seconds
 
     @ManyToOne
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
 
     @ManyToOne
-    @JoinColumn(name = "album_id", referencedColumnName = "id")
-    private Album album;
-
-    @ManyToOne
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
 
     @ManyToOne
-    @JoinColumn(name = "play_list_id", referencedColumnName = "id")
-    private PlayList playList;
+    @JoinColumn(name = "album_id", referencedColumnName = "id")
+    private Album album;
+
+    @ManyToMany(mappedBy = "songs")
+    @JsonIgnore
+    private List<PlayList> playLists;
 }

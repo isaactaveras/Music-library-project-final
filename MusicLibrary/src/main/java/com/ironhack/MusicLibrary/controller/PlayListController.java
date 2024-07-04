@@ -51,7 +51,7 @@ public class PlayListController implements PlayListControllerInterface {
 
     @DeleteMapping("/{id}/delete")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public PlayList deletePlayList(@PathVariable(name = "id") Long playListId) {
-        return playListService.deletePlayList(playListId);
+    public void deletePlayList(@PathVariable(name = "id") Long playListId) {
+        playListService.deletePlayList(playListId);
     }
 }

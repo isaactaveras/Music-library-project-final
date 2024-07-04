@@ -1,6 +1,5 @@
 package com.ironhack.MusicLibrary.dtos;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class GenreDTO {
 
-    @NotBlank(message = "Name is mandatory")
     private String name;
 }

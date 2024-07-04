@@ -1,5 +1,6 @@
 package com.ironhack.MusicLibrary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -24,9 +25,11 @@ public class Genre {
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "genre")
+    @JsonIgnore
     private List<Album> albums;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "genre")
+    @JsonIgnore
     private List<Song> songs;
 
     public Genre(String name) {

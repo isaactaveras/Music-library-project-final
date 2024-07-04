@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,10 +23,19 @@ public class PlayList {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @OneToMany(mappedBy = "playList")
+    @ManyToMany
+    @JoinTable(
+            name = "playlist_song",
+            joinColumns = @JoinColumn(name = "play_list_id"),
+            inverseJoinColumns = @JoinColumn(name = "song_id")
+    )
     private List<Song> songs;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToMany
+    @JoinTable(
+            name = "playlist_user",
+            joinColumns = @JoinColumn(name = "play_list_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> users = new ArrayList<>();
 }

@@ -47,11 +47,15 @@ public class SongService {
         Genre genre = genreRepository.findById(songDTO.getGenreId()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Genre not found"));
         Album album = albumRepository.findById(songDTO.getAlbumId()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Album not found"));
         Song song = songRepository.findById(sondId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Song not found"));
-        song.setTitle(songDTO.getTitle());
-        song.setDuration(songDTO.getDuration());
-        song.setArtist(artist);
-        song.setAlbum(album);
-        song.setGenre(genre);
+
+        if(songDTO.getTitle() != null && !songDTO.getTitle().isEmpty()){
+            song.setTitle(songDTO.getTitle());
+        }
+        if(songDTO.getDuration() != null) song.setDuration(songDTO.getDuration());
+        if(songDTO.getGenreId() != null) song.setGenre(genre);
+        if(songDTO.getArtistId() != null) song.setArtist(artist);
+        if(songDTO.getAlbumId() != null) song.setAlbum(album);
+
         return songRepository.save(song);
     }
 

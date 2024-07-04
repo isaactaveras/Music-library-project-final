@@ -1,5 +1,6 @@
 package com.ironhack.MusicLibrary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -34,7 +35,8 @@ public class User {
     @ManyToMany(fetch = EAGER)
     private Collection<Role> roles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @ManyToMany(mappedBy = "users")
+    @JsonIgnore
     private List<PlayList> playlists;
 
     public User(String name, String username, String password) {

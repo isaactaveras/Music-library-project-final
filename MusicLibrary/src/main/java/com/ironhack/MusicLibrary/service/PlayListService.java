@@ -3,13 +3,16 @@ package com.ironhack.MusicLibrary.service;
 import com.ironhack.MusicLibrary.dtos.PlayListDTO;
 import com.ironhack.MusicLibrary.model.PlayList;
 import com.ironhack.MusicLibrary.model.Song;
+import com.ironhack.MusicLibrary.model.User;
 import com.ironhack.MusicLibrary.repository.PlayListRepository;
 import com.ironhack.MusicLibrary.repository.SongRepository;
+import com.ironhack.MusicLibrary.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +21,9 @@ public class PlayListService {
 
     @Autowired
     private PlayListRepository playListRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private SongRepository songRepository;
@@ -30,9 +36,22 @@ public class PlayListService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Some songs do not exist");
         }
 
+        // Buscar el usuario por su ID en la base de datos
+        User user = userRepository.findById(playListDTO.getUserId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+
         PlayList playList = new PlayList();
         playList.setName(playListDTO.getName());
         playList.setSongs(songs);
+
+        // Asociar el usuario encontrado con la lista de reproducción
+        playList.getUsers().add(user);
+
+//        for (Song song : songs) {
+//            song.setPlayList(playList);
+//        }
+//        songRepository.saveAll(songs);
+
         return playListRepository.save(playList);
     }
 
@@ -40,7 +59,10 @@ public class PlayListService {
         PlayList playList = playListRepository.findById(playListId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "PlayList with id " + playListId + " not found"));
 
         // Verificar que todas las canciones existen
-        List<Long> songIds = playListDTO.getSongs().stream().map(Song::getId).collect(Collectors.toList());
+        List<Long> songIds = new ArrayList<>();
+        if(playListDTO.getSongs() != null) {
+            songIds = playListDTO.getSongs().stream().map(Song::getId).collect(Collectors.toList());
+        }
         List<Song> songs = songRepository.findAllById(songIds);
 
         if (songs.size() != songIds.size()) {
@@ -52,9 +74,8 @@ public class PlayListService {
         return playListRepository.save(playList);
     }
 
-    public PlayList deletePlayList(Long playListId) {
-        PlayList foundPlayList = playListRepository.findById(playListId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "PlayList with id " + playListId + " not found"));
+    public void deletePlayList(Long playListId) {
+        playListRepository.findById(playListId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "PlayList with id " + playListId + " not found"));
         playListRepository.deleteById(playListId);
-        return foundPlayList;
     }
 }
