@@ -1,6 +1,7 @@
 package com.ironhack.MusicLibrary.service;
 
 import com.ironhack.MusicLibrary.dtos.PlayListDTO;
+import com.ironhack.MusicLibrary.model.Album;
 import com.ironhack.MusicLibrary.model.PlayList;
 import com.ironhack.MusicLibrary.model.Song;
 import com.ironhack.MusicLibrary.model.User;
@@ -14,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -77,5 +79,14 @@ public class PlayListService {
     public void deletePlayList(Long playListId) {
         playListRepository.findById(playListId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "PlayList with id " + playListId + " not found"));
         playListRepository.deleteById(playListId);
+    }
+
+    public PlayList findById(Long playlistId) {
+        Optional<PlayList> playList = playListRepository.findById(playlistId);
+        if (playList.isPresent()) {
+            return playList.get();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "PlayList id not found.");
+        }
     }
 }

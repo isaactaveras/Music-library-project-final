@@ -38,4 +38,10 @@ public class PlayList {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private List<User> users = new ArrayList<>();
+
+    public PlayList(String name, List<Song> songs, List<User> users) {
+        this.name = name;
+        this.songs = songs;
+        this.users = users;
+    }
 }

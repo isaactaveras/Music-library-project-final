@@ -20,6 +20,6 @@ public class PlayListDTO {
 
     private List<Song> songs = new ArrayList<>();
 
-    @NotNull(message = "User ID is mandatory")
+    //@NotNull(message = "User ID is mandatory")
     private Long userId;
 }
