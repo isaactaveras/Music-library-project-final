@@ -4,7 +4,7 @@ Music Library es una aplicación de gestión musical que permite a los usuarios 
 
 Además, Music Library ofrece funciones de autenticación y autorización para garantizar la seguridad de los usuarios y de su contenido musical. Los roles de usuario pueden ser gestionados, permitiendo que diferentes usuarios tengan diferentes niveles de acceso y control sobre la biblioteca musical.
 
-![](/Users/eva_isaac/Desktop/ISAAC/IRONHACK/Proyecto final/Music Library.pdf)
+![alt tag](/Users/eva_isaac/Desktop/ISAAC/IRONHACK/Proyecto final/Music Library.pdf)
 
 ## Configuración
 
