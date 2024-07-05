@@ -45,7 +45,7 @@ public class UserController {
     @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public User getUserById(@PathVariable(name = "id") Long userId) {
-        return UserRepository.findById(userId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+        return userService.findById(userId);
     }
 
     @DeleteMapping("/{id}/delete")

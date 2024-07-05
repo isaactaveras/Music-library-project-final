@@ -1,6 +1,7 @@
 package com.ironhack.MusicLibrary.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ironhack.MusicLibrary.dtos.AlbumDTO;
 import com.ironhack.MusicLibrary.dtos.UserDTO;
 import com.ironhack.MusicLibrary.model.User;
 import com.ironhack.MusicLibrary.repository.UserRepository;
@@ -88,6 +89,25 @@ class UserControllerTest {
 
         User updated = userRepository.findById(user.getId()).get();
         assertEquals("Ville Valo", updated.getName());
+    }
+
+    @Test
+    void update_nonExistingId_throwsNotFound() throws Exception {
+        UserDTO userDTO = new UserDTO("Ville Valo", "ville", "1234");
+        String body = objectMapper.writeValueAsString(userDTO);
+
+        mockMvc.perform(put("/users/{id}", 0L)
+                        .content(body)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void delete_existingId_albumDeleted() throws Exception {
+        mockMvc.perform(delete("/users/{id}/delete", user.getId()))
+                .andExpect(status().isNoContent());
+
+        assertFalse(userRepository.findById(user.getId()).isPresent());
     }
 
 }

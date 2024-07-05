@@ -30,6 +30,7 @@ public class User {
     @NotBlank(message = "username is mandatory")
     private String username;
 
+    @NotBlank(message = "Password is mandatory")
     private String password;
 
     @ManyToMany(fetch = EAGER)

@@ -1,5 +1,6 @@
 package com.ironhack.MusicLibrary.service;
 
+import com.ironhack.MusicLibrary.model.Song;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.ironhack.MusicLibrary.dtos.UserDTO;
@@ -19,6 +20,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -67,6 +70,30 @@ public class UserService implements UserDetailsService {
         User foundUser = userRepository.findById(userId).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
         userRepository.deleteById(userId);
         return foundUser;
+    }
+
+    public User findById(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User id not found.");
+        }
+    }
+
+    public User getUser(String username) {
+        log.info("Fetching user {}", username);
+        return userRepository.findByUsername(username);
+    }
+
+    /**
+     * Retrieves all users from the database
+     *
+     * @return a list of all users
+     */
+    public List<User> getUsers() {
+        log.info("Fetching all users");
+        return userRepository.findAll();
     }
 
     public Role saveRole(Role role) {
