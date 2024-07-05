@@ -49,11 +49,6 @@ public class PlayListService {
         // Asociar el usuario encontrado con la lista de reproducción
         playList.getUsers().add(user);
 
-//        for (Song song : songs) {
-//            song.setPlayList(playList);
-//        }
-//        songRepository.saveAll(songs);
-
         return playListRepository.save(playList);
     }
 
