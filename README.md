@@ -9,38 +9,38 @@ Además, Music Library ofrece funciones de autenticación y autorización para g
 
 ## Configuración
 
-1. Base de datos:
+1. Base de datos:  
     
-    MySQL.
-    Configuración de conexión a la base de datos.
-    Mapeo de entidades y relaciones con la base de datos (usando Hibernate).
+    MySQL.  
+    Conexión a la base de datos.  
+    Mapeo de entidades y relaciones con la base de datos (usando Hibernate).  
 
 2. Seguridad:
     
-    Configuración de autenticación y autorización, posiblemente utilizando Spring Security.
+    Autenticación y autorización, utilizando Spring Security.
     Roles y permisos de usuario.
     Encriptación de contraseñas y gestión de sesiones.
 
 3. API RESTful:
 
-    Configuración de los controladores REST para manejar las operaciones CRUD (Crear, Leer, Actualizar, Borrar) para canciones, álbumes, artistas, etc.
-    Configuración de las rutas URL para acceder a los recursos de la aplicación.
+    Controladores REST para manejar las operaciones CRUD (Crear, Leer, Actualizar, Borrar) para canciones, álbumes, artistas, etc.  
+    Rutas URL para acceder a los recursos de la aplicación.
 
 4. Servicios y repositorios:
 
-    Configuración e inyección de dependencias de los servicios y repositorios utilizados para interactuar con la base de datos.
+    Inyección de dependencias de los servicios y repositorios utilizados para interactuar con la base de datos.
 
 5. DTOs (Objetos de transferencia de datos):
 
-    Definición de DTOs para transferir datos entre las capas de la aplicación y la presentación de datos en las respuestas de la API REST.
+    DTOs para transferir datos entre las capas de la aplicación y la presentación de datos en las respuestas de la API REST.
 
 6. Pruebas:
 
-    Configuración de las pruebas unitarias, de integración y de extremo a extremo utilizando las herramientas correspondientes (JUnit, Mockito, MockMvc).
+    Pruebas unitarias, de integración y de extremo a extremo utilizando herramientas como JUnit, Mockito, MockMvc.
 
 7. Logging y monitoreo:
 
-    Configuración de registro (logging) para realizar un seguimiento de las operaciones y sucesos importantes en la aplicación.
+    Registro (logging) para realizar un seguimiento de las operaciones y sucesos importantes en la aplicación.
 
 ## Tecnologías utilizadas
 
@@ -70,9 +70,9 @@ Además, Music Library ofrece funciones de autenticación y autorización para g
 
 7. Herramientas de Pruebas:
 
-    JUnit: Marco de pruebas unitarias.
-    Mockito: Utilizado para simular objetos en pruebas unitarias.
-    MockMvc: Utilizado para pruebas de controladores en el contexto de Spring MVC.
+    JUnit: Marco de pruebas unitarias.  
+    Mockito: Utilizado para simular objetos en pruebas unitarias.  
+    MockMvc: Utilizado para pruebas de controladores en el contexto de Spring MVC.  
 
 8. Gestión de Dependencias:
 
@@ -126,34 +126,34 @@ DELETE **_/artists/{id}/delete_**: Elimina un artista por su ID.
 
 **_/playlists_**:
 
-POST **_/playlists_**: Crea una nueva lista de reproducción.
-GET **_/playlists_**: Obtiene la lista de todas las listas de reproducción.
-GET **_/playlists/id/{id}_**: Obtiene una lista de reproducción específica por su ID.
-PUT **_/playlists/{id}_**: Actualiza una lista de reproducción existente por su ID.
-DELETE **_/playlists/{id}/delete_**: Elimina una lista de reproducción por su ID.
+POST **_/playlists_**: Crea una nueva lista de reproducción.  
+GET **_/playlists_**: Obtiene la lista de todas las listas de reproducción.  
+GET **_/playlists/id/{id}_**: Obtiene una lista de reproducción específica por su ID.  
+PUT **_/playlists/{id}_**: Actualiza una lista de reproducción existente por su ID.  
+DELETE **_/playlists/{id}/delete_**: Elimina una lista de reproducción por su ID.  
 
 **_/genres_**:
 
-POST **_/genres_**: Crea un nuevo género musical.
-PUT **_/genres/{id}_**: Actualiza un género musical existente por su ID.
-GET **_/genres_**: Obtiene la lista de todos los géneros musicales.
-GET **_/genres/id/{id}_**: Obtiene un género musical específico por su ID.
-DELETE **_/genres/{id}/delete_**: Elimina un género musical por su ID.
+POST **_/genres_**: Crea un nuevo género musical.  
+PUT **_/genres/{id}_**: Actualiza un género musical existente por su ID.  
+GET **_/genres_**: Obtiene la lista de todos los géneros musicales.  
+GET **_/genres/id/{id}_**: Obtiene un género musical específico por su ID.  
+DELETE **_/genres/{id}/delete_**: Elimina un género musical por su ID.  
 
 **_/users_**:
 
-POST **_/users_**: Crea un nuevo usuario.
-PUT **_/users/{id}_**: Actualiza un usuario existente por su ID.
-GET **_/users_**: Obtiene la lista de todos los usuarios.
-GET **_/users/id/{id}_**: Obtiene un usuario específico por su ID.
-DELETE **_/users/{id}/delete_**: Elimina un usuario por su ID.
+POST **_/users_**: Crea un nuevo usuario.  
+PUT **_/users/{id}_**: Actualiza un usuario existente por su ID.  
+GET **_/users_**: Obtiene la lista de todos los usuarios.  
+GET **_/users/id/{id}_**: Obtiene un usuario específico por su ID.  
+DELETE **_/users/{id}/delete_**: Elimina un usuario por su ID.  
 
 ## Enlaces adicionales
 
 Gestor de tareas: Trello  
 https://trello.com/invite/b/n8qAjMpR/ATTId3038aa4635ffb5f53a164edcce3ac263F3E0D48/music-library
 
-Presentación:
+Presentación:  
 https://docs.google.com/presentation/d/13toSJe2Cheiwp-cycKvCAukjp9tLeGDNd4ZDicTz-9U/edit?usp=sharing
 
 ## Trabajo futuro
