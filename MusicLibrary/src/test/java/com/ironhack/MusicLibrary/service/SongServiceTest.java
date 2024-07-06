@@ -82,7 +82,7 @@ class SongServiceTest {
 
     @Test
     void create_validSong_songSaved() {
-        SongDTO songDTO = new SongDTO("Even Flow", 286, artist.getId(), genre.getId(), album.getId());
+        SongDTO songDTO = new SongDTO("Even Flow", 286, artist.getId(), album.getId(), genre.getId());
 
         Song saved = songService.createSong(songDTO);
         assertNotNull(saved);
@@ -99,7 +99,7 @@ class SongServiceTest {
 
     @Test
     void update_existingId_songUpdated() {
-        SongDTO songDTO = new SongDTO("Jeremy", 319, artist.getId(), genre.getId(), album.getId());
+        SongDTO songDTO = new SongDTO("Jeremy", 319, artist.getId(), album.getId(), genre.getId());
         Song song = songRepository.findAll().get(0);
 
         songService.updateSong(song.getId(), songDTO);

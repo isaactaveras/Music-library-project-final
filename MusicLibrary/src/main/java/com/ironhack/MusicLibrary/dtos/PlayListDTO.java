@@ -1,7 +1,6 @@
 package com.ironhack.MusicLibrary.dtos;
 
 import com.ironhack.MusicLibrary.model.Song;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +19,5 @@ public class PlayListDTO {
 
     private List<Song> songs = new ArrayList<>();
 
-    //@NotNull(message = "User ID is mandatory")
     private Long userId;
 }

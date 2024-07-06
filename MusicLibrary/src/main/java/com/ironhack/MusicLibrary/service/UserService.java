@@ -1,6 +1,5 @@
 package com.ironhack.MusicLibrary.service;
 
-import com.ironhack.MusicLibrary.model.Song;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.ironhack.MusicLibrary.dtos.UserDTO;

@@ -1,7 +1,6 @@
 package com.ironhack.MusicLibrary.service;
 
 import com.ironhack.MusicLibrary.dtos.GenreDTO;
-import com.ironhack.MusicLibrary.model.Artist;
 import com.ironhack.MusicLibrary.model.Genre;
 import com.ironhack.MusicLibrary.repository.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -71,10 +71,10 @@ class SongControllerTest {
 
     @AfterEach
     void tearDown() {
-//        songRepository.deleteAll();
-//        albumRepository.deleteAll();
-//        artistRepository.deleteAll();
-//        genreRepository.deleteAll();
+        songRepository.deleteAll();
+        albumRepository.deleteAll();
+        genreRepository.deleteAll();
+        artistRepository.deleteAll();
     }
 
     @Test
@@ -94,7 +94,7 @@ class SongControllerTest {
 
     @Test
     void create_validSong_songCreated() throws Exception {
-        SongDTO songDTO = new SongDTO("Even Flow", 286, artist.getId(), genre.getId(), album.getId());
+        SongDTO songDTO = new SongDTO("Even Flow", 286, artist.getId(), album.getId(), genre.getId());
         String body = objectMapper.writeValueAsString(songDTO);
 
         MvcResult result = mockMvc.perform(post("/songs")
@@ -108,7 +108,7 @@ class SongControllerTest {
 
     @Test
     void update_existingId_songUpdated() throws Exception {
-        SongDTO songDTO = new SongDTO("Alive", 341, artist.getId(), genre.getId(), album.getId());
+        SongDTO songDTO = new SongDTO("Alive", 341, artist.getId(), album.getId(), genre.getId());
         String body = objectMapper.writeValueAsString(songDTO);
 
         mockMvc.perform(put("/songs/{id}", song.getId())

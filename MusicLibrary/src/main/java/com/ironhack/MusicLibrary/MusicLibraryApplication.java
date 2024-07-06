@@ -31,19 +31,19 @@ public class MusicLibraryApplication {
 	@Bean
 	CommandLineRunner run(UserService userService, RoleService roleService) {
 		return args -> {
-//			roleService.saveRole(new Role(null, "ROLE_USER"));
-//			roleService.saveRole(new Role(null, "ROLE_ADMIN"));
-//
-//			userService.createUser(new UserDTO("John Doe", "john", "1234"));
-//			userService.createUser(new UserDTO("James Smith", "james", "1234"));
-//			userService.createUser(new UserDTO("Jane Carry", "jane", "1234"));
-//			userService.createUser(new UserDTO("Chris Anderson", "chris", "1234"));
-//
-//			roleService.addRoleToUser("john", "ROLE_USER");
-//			roleService.addRoleToUser("james", "ROLE_ADMIN");
-//			roleService.addRoleToUser("jane", "ROLE_USER");
-//			roleService.addRoleToUser("chris", "ROLE_ADMIN");
-//			roleService.addRoleToUser("chris", "ROLE_USER");
+			roleService.saveRole(new Role(null, "ROLE_USER"));
+			roleService.saveRole(new Role(null, "ROLE_ADMIN"));
+
+			userService.createUser(new UserDTO("John Doe", "john", "1234"));
+			userService.createUser(new UserDTO("James Smith", "james", "1234"));
+			userService.createUser(new UserDTO("Jane Carry", "jane", "1234"));
+			userService.createUser(new UserDTO("Chris Anderson", "chris", "1234"));
+
+			roleService.addRoleToUser("john", "ROLE_USER");
+			roleService.addRoleToUser("james", "ROLE_ADMIN");
+			roleService.addRoleToUser("jane", "ROLE_USER");
+			roleService.addRoleToUser("chris", "ROLE_ADMIN");
+			roleService.addRoleToUser("chris", "ROLE_USER");
 		};
 	}
 

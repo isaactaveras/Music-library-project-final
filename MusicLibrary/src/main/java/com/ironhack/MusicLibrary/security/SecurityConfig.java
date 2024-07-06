@@ -84,13 +84,13 @@ public class SecurityConfig {
         // set up authorization for different request matchers and user roles
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/login/**").permitAll()
-//                .requestMatchers(POST, "/users").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-//                .requestMatchers(PUT, "/users/**").hasAnyAuthority("ROLE_ADMIN")
-//                .requestMatchers(GET, "/users").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-//                .requestMatchers(GET, "/users/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-//                .requestMatchers(DELETE, "/users/**").hasAnyAuthority("ROLE_ADMIN")
-                .anyRequest().permitAll());
-//                .anyRequest().authenticated());
+                .requestMatchers(POST, "/users").hasAnyAuthority("ROLE_ADMIN")
+                .requestMatchers(PUT, "/users/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+                .requestMatchers(GET, "/users").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .requestMatchers(GET, "/users/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .requestMatchers(DELETE, "/users/**").hasAnyAuthority("ROLE_ADMIN")
+//                .anyRequest().permitAll());
+                .anyRequest().authenticated());
 
         // add the custom authentication filter to the http security object
         http.addFilter(customAuthenticationFilter);

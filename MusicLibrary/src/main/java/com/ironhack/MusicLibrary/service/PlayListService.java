@@ -1,7 +1,6 @@
 package com.ironhack.MusicLibrary.service;
 
 import com.ironhack.MusicLibrary.dtos.PlayListDTO;
-import com.ironhack.MusicLibrary.model.Album;
 import com.ironhack.MusicLibrary.model.PlayList;
 import com.ironhack.MusicLibrary.model.Song;
 import com.ironhack.MusicLibrary.model.User;
