@@ -154,6 +154,7 @@ Gestor de tareas: Trello
 https://trello.com/invite/b/n8qAjMpR/ATTId3038aa4635ffb5f53a164edcce3ac263F3E0D48/music-library
 
 Presentación:
+https://docs.google.com/presentation/d/13toSJe2Cheiwp-cycKvCAukjp9tLeGDNd4ZDicTz-9U/edit?usp=sharing
 
 ## Trabajo futuro
 
